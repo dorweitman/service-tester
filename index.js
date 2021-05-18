@@ -2,7 +2,7 @@ const schedule = require("node-schedule");
 
 const config = require("./src/config");
 const stringify = require("./src/utils/stringiful");
-const { checkIsAlive, checkICMPConnection } = require("./src/tests");
+const { checkIsAlive, checkICMPConnection,  } = require("./src/tests");
 const { sendDataToWhatsup } = require("./src/utils/whatsup");
 const { determineStatus } = require("./src/utils/status");
 
@@ -13,12 +13,12 @@ const main = async () => {
 
   let resultsForWhatsup = [];
   for (const service of services.list) {
-    const { name, hosts, isAliveRoute, functionalityIdOne, functionalityIdTwo, protocol } = service;
+    const { name, applicationHosts, isAliveRoute, functionalityIdOne, functionalityIdTwo, protocol } = service;
 
     const hostIsAliveChecker = (host) => checkIsAlive(host, isAliveRoute, protocol);
 
-    const connectivities = await Promise.all(hosts.map(hostIsAliveChecker));
-    const pings = await Promise.all(hosts.map(checkICMPConnection));
+    const connectivities = await Promise.all(applicationHosts.map(hostIsAliveChecker));
+    const pings = await Promise.all(applicationHosts.map(checkICMPConnection));
 
     const responsiveStatus = determineStatus(connectivities);
     const reachableStatus = determineStatus(pings);

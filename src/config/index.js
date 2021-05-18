@@ -23,6 +23,18 @@ const config = {
     CRITICAL: 2,
     DOWN: 3,
   },
+  elastic: {
+    options: {
+      pingTimeout: env
+        .get("ELASTIC_PING_TIMEOUT")
+        .default(5000)
+        .asIntPositive(),
+    },
+    requestTimeout: env
+      .get("ELASTIC_REQUEST_TIMEOUT")
+      .default(5000)
+      .asIntPositive(),
+  },
 };
 
 module.exports = config;
