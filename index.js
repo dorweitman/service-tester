@@ -8,8 +8,6 @@ const { determineStatus } = require("./src/utils/status");
 
 const { cronTimer, services } = config;
 
-
-
 const main = async () => {
   console.log("Checking...");
 
