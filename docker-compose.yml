@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  service-tester:
+    # image: registry.gitlab.com/yesodot/rnd/terminal-rabaz/dropbox-monitor/microservices/monitor-api
+    build: .
+    environment:
+      CRON_TIMER: '*/1 * * * * *'
+      WHATSUP_BASE_URI: http://producer.germanywestcentral.cloudapp.azure.com
+      WHATSUP_UPDATE_ROUTE: /api/produce
+      TESTER_BASE_URI: http://terminal-tester:8000
+      SERVICES: '[{"name":"Whatsup Producer","hosts":["http://producer.germanywestcentral.cloudapp.azure.com"],"functionalityIdOne":1,"functionalityIdTwo":2,"isAliveRoute":["/isAlive"]}]'
