@@ -1,23 +1,14 @@
 const schedule = require("node-schedule");
 
-const config = require("./config");
-const stringify = require("./utils/stringiful");
-const { checkIsAlive, checkICMPConnection } = require("./tests");
-const { sendDataToWhatsup } = require("./whatsup");
+const config = require("./src/config");
+const stringify = require("./src/utils/stringiful");
+const { checkIsAlive, checkICMPConnection } = require("./src/tests");
+const { sendDataToWhatsup } = require("./src/utils/whatsup");
+const { determineStatus } = require("./src/utils/status");
 
-const { cronTimer, services, status } = config;
+const { cronTimer, services } = config;
 
-const determineStatus = (arrOfBooleans) => {
-  if (arrOfBooleans.every(Boolean)) {
-    return status.OK;
-  }
 
-  if (arrOfBooleans.includes(false) && arrOfBooleans.includes(true)) {
-    return status.CRITICAL;
-  }
-
-  return status.DOWN;
-};
 
 const main = async () => {
   console.log("Checking...");

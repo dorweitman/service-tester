@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-const { whatsup } = require("./config");
-const trycatch = require("./utils/trycatch");
-const stringify = require("./utils/stringiful");
+const { whatsup } = require("../config");
+const trycatch = require("./trycatch");
+const stringify = require("./stringiful");
 
 const { baseUri, updateRoute, requestTimeout } = whatsup;
 
