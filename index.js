@@ -9,9 +9,11 @@ const { determineStatus } = require("./src/utils/status");
 const { cronTimer, services } = config;
 
 const main = async () => {
-  console.log("Checking...");
+  const timeStamp = new Date();
 
-  let resultsForWhatsup = [];
+  console.log(`[${timeStamp.toISOString()}] Preparing to perform tests...`);
+
+  let resultsForWhatsup = []; 
   for (const service of services.list) {
     const { name, applicationHosts, isAliveRoute, functionalityIdOne, functionalityIdTwo, protocol } = service;
 
@@ -23,7 +25,6 @@ const main = async () => {
     const responsiveStatus = determineStatus(connectivities);
     const reachableStatus = determineStatus(pings);
 
-    const timeStamp = new Date();
     const status = Math.max(responsiveStatus, reachableStatus);
 
     const functionalities = [

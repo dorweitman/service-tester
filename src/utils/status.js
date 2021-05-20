@@ -1,6 +1,8 @@
 const config = require("../config");
 
-const { status } = config;
+const {
+  whatsup: { status },
+} = config;
 
 const determineStatus = (arrOfBooleans) => {
   if (arrOfBooleans.every(Boolean)) {

@@ -13,10 +13,12 @@
     "dotenv": "^9.0.2",
     "elasticsearch": "^16.7.2",
     "env-var": "^7.0.1",
+    "joi": "^17.4.0",
     "menashmq": "^0.1.5",
     "mongoose": "^5.12.10",
     "node-schedule": "^2.0.0",
     "ping": "^0.4.1",
+    "seedrandom": "^3.0.5",
     "stringiful": "0.0.1"
   }
 }

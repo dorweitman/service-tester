@@ -12,16 +12,16 @@ const config = {
       .get("WHATSUP_REQUEST_TIMEOUT")
       .default(1500)
       .asIntPositive(),
+    status: {
+      OK: 0,
+      ALERT: 1,
+      CRITICAL: 2,
+      DOWN: 3,
+    },
   },
   services: {
     isAliveTimeout: env.get("IS_ALIVE_TIMEOUT").default(3000).asIntPositive(),
     list: env.get("SERVICES").asJsonArray(),
-  },
-  status: {
-    OK: 0,
-    ALERT: 1,
-    CRITICAL: 2,
-    DOWN: 3,
   },
   elastic: {
     options: {

@@ -1,4 +1,5 @@
 const axios = require("axios");
+const seedrandom = require("seedrandom");
 
 const { whatsup } = require("../config");
 const trycatch = require("./trycatch");
@@ -25,4 +26,8 @@ const sendDataToWhatsup = async (whatsupData) => {
   console.log("[LOGGER] Sent data to Whatsup!");
 };
 
-module.exports = { sendDataToWhatsup };
+const generateUniqueFunctionalityId = (system, functionality) => {
+  return seedrandom(`${system}${functionality}`)();
+};
+
+module.exports = { sendDataToWhatsup, generateUniqueFunctionalityId };
